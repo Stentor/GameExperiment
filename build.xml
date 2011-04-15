@@ -1,0 +1,48 @@
+<project name="GameExperiment" default="compile" basedir=".">
+
+	<property name="mxmlc" value="/opt/flex3.5/bin/mxmlc"/>
+	<property name="flashplayer" value="flashplayerd"/>
+	<target name="compile" depends="embed">
+		<antcall target="build">
+			<param name="currentProjectRootDir" value="${basedir}" />
+			<param name="currentProjectName" value="GameExperiment" />
+			<param name="currentProjectRootFile" value="GameExperiment.as"/>
+		</antcall>
+	</target>
+	<target name="embed">
+		<exec executable="${basedir}/generateEmbed.py" />	
+	</target>
+	<target name="build" description="Build a SWF for a project given a few properties. Used by per-project Ant files." >
+	<!--
+         We expect a few properties.
+         
+         currentProject.rootDir - root directory (like examples/PBEngineDemo).
+         currentProject.name    - name of current project.
+         currentProject.rootFile - .as or .mxml file that is entry point.
+      	-->
+      		<echo>Building ${currentProjectName} in ${currentProjectRootDir} from ${currentProjectRootFile}</echo>
+      		<exec executable="${mxmlc}">
+        		 <arg line="-source-path+=&quot;${currentProjectRootDir}/src&quot; " />
+        		 <arg line="-library-path+=&quot;${currentProjectRootDir}/lib&quot;" />
+        		 <arg line="--keep-as3-metadata+=TypeHint,EditorData,Embed" />
+        		 <arg line="-compiler.optimize=true -use-network=false " />
+        		 <arg line="-output &quot;${currentProjectRootDir}/bin/${currentProjectName}.swf&quot;" />
+        		 <arg line="-keep-generated-actionscript=true -incremental=true" />
+        		 <arg line="--target-player=10.2.0" />
+
+        		 <arg line="&quot;${currentProjectRootDir}/src/${currentProjectRootFile}&quot;" />
+      		</exec>
+   	</target>
+	<target name="clean">
+		<delete file="${basedir}/bin/GameExperiment.swf"/>
+		<delete file="${basedir}/bin/GameExperiment.swf.cache"/>
+		<delete dir="${basedir}/src/generated" />
+	</target>
+	<target name="test" depends="compile">
+		
+		<echo>${basedir}/bin/${currentProjectName}.swf</echo>
+		<exec executable="${flashplayer}">
+			<arg line="${basedir}/bin/GameExperiment.swf" />
+		</exec>
+	</target>
+</project>
