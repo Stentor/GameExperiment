@@ -1,4 +1,4 @@
-package
+﻿package
 {
 	import flash.display.Sprite;
 	
@@ -7,7 +7,7 @@ package
 	{
 		public function GameExperiment()
 		{
-			trace("toto");
+			trace("steve");
 		}
 	}
 }
