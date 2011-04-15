@@ -7,7 +7,7 @@ package
 	{
 		public function GameExperiment()
 		{
-			
+			trace("toto");
 		}
 	}
 }
