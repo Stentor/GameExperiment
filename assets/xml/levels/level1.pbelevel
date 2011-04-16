@@ -1,1 +1,70 @@
+<things version="1">
 
+	<entity name="Scene">
+		<component type="com.pblabs.rendering2D.BitmapDataScene" name="Scene">
+			<sceneViewName>MainView</sceneViewName>
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+		</component>
+	</entity>
+	
+	<entity name="SpatialDB">
+		<component type="com.pblabs.rendering2D.BasicSpatialManager2D" name="Manager" >
+		</component>
+	</entity>
+	
+	<entity name="ShipSpriteSheet">
+		<component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="SpriteSheet">
+			<imageFilename>../assets/img/Ship.png</imageFilename>
+			<divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+				<xCount>4</xCount>
+				<yCount>1</yCount>
+			</divider>
+		</component>
+	</entity>
+	
+	<entity name="Ship">
+		<component type="com.pblabs.rendering2D.SpriteSheetRenderer" name="Render">
+			<scene componentReference="Scene" componentName="Scene"/>
+			<spriteSheet componentReference="ShipSpriteSheet"/>
+			<positionProperty>@Spatial.position</positionProperty>
+			<rotationProperty>@Spatial.rotation</rotationProperty>
+			<sizeProperty>@Spatial.size</sizeProperty>
+		</component>
+		<component type="com.pblabs.rendering2D.SimpleSpatialComponent" name="Spatial">
+			<spatialManager componentReference="SpatialDB"/>
+			<size>
+				<x>64</x>
+				<y>64</y>
+			</size>
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<rotation>30</rotation>
+		</component>
+		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
+			<animations>
+				<idle type="com.pblabs.animation.FrameAnimator">
+					<animationType>LOOP_ANIMATION</animationType>
+					<duration>0.2</duration>
+					<repeatCount>-1</repeatCount>
+					<startValue type="int">1</startValue>
+					<targetValue type="int">4</targetValue>
+				</idle>
+			</animations>
+			<defaultAnimation>idle</defaultAnimation>
+			<reference>@Render.spriteIndex</reference>
+		</component>
+	</entity>
+	
+	<group name="All">
+		<objectReference name="Scene"/>
+        <objectReference name="SpatialDB"/>
+        <objectReference name="ShipSpriteSheet"/>
+        <objectReference name="Ship"/>
+	</group>
+	
+</things>
