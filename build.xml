@@ -1,6 +1,6 @@
 <project name="GameExperiment" default="compile" basedir=".">
 
-	<property name="mxmlc" value="/opt/flex3.5/bin/mxmlc"/>
+	<property name="mxmlc" value="/opt/flex4.1/bin/mxmlc"/>
 	<property name="flashplayer" value="flashplayerd"/>
 	<target name="compile" depends="embed">
 		<antcall target="build">
@@ -24,22 +24,19 @@
       		<exec executable="${mxmlc}">
         		 <arg line="-source-path+=&quot;${currentProjectRootDir}/src&quot; " />
         		 <arg line="-library-path+=&quot;${currentProjectRootDir}/lib&quot;" />
-        		 <arg line="--keep-as3-metadata+=TypeHint,EditorData,Embed" />
+        		 <arg line="--keep-as3-metadata+=TypeHint,EditorData,Embed " />
         		 <arg line="-compiler.optimize=true -use-network=false " />
-        		 <arg line="-output &quot;${currentProjectRootDir}/bin/${currentProjectName}.swf&quot;" />
-        		 <arg line="-keep-generated-actionscript=true -incremental=true" />
-        		 <arg line="--target-player=10.2.0" />
-
+        		 <arg line="-static-link-runtime-shared-libraries=true -runtime-shared-libraries=false " />
+        		 <arg line="-output &quot;${currentProjectRootDir}/bin/${currentProjectName}.swf&quot; " />
+        		 <arg line="-incremental=true "  />
+        		 <arg line="--target-player=10.1.0" />
         		 <arg line="&quot;${currentProjectRootDir}/src/${currentProjectRootFile}&quot;" />
       		</exec>
    	</target>
 	<target name="clean">
-		<delete file="${basedir}/bin/GameExperiment.swf"/>
-		<delete file="${basedir}/bin/GameExperiment.swf.cache"/>
-		<delete dir="${basedir}/src/generated" />
+			<delete dir="${basedir}/bin" />
 	</target>
-	<target name="test" depends="compile">
-		
+	<target name="test" depends="compile">		
 		<echo>${basedir}/bin/${currentProjectName}.swf</echo>
 		<exec executable="${flashplayer}">
 			<arg line="${basedir}/bin/GameExperiment.swf" />

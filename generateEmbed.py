@@ -25,8 +25,9 @@ output=file("src/EmbedResource.as","w")
 output.write(header)
 for root, subFolders, files in os.walk('assets'):
 	for file in files:
-		extension=file[-3:]
-		if (extension.lower()=="xml"):
+		extension=file.split('.')[-1]
+		print extension
+		if (extension.lower()=="xml" or extension.lower()=="pbelevel"):
 			output.write("""
 		[Embed(source="%s",mimeType="application/octet-stream")]
 		public var %s:Class;		

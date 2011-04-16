@@ -1,0 +1,6 @@
+<levelDescriptions>
+   <level index="1">
+      <file filename="../assets/xml/levels/level1.pbelevel"/>
+      <group name="All"/>
+    </level>
+</levelDescriptions>
