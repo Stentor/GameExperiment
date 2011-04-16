@@ -26,16 +26,16 @@ output.write(header)
 for root, subFolders, files in os.walk('assets'):
 	for file in files:
 		extension=file.split('.')[-1]
-		print extension
-		if (extension.lower()=="xml" or extension.lower()=="pbelevel"):
+		
+		if (extension.lower() in ("xml","pbelevel")):
 			output.write("""
 		[Embed(source="%s",mimeType="application/octet-stream")]
 		public var %s:Class;		
 			"""%(os.path.join('..',root,file),formatFile(os.path.join(root,file))))
-		elif (extension.lower()=="ttf"):
+			
+		elif (extension.lower() in ("ttf","otf")):
 			print "Skipping Font %s"%(file)
-		elif (extension.lower()=="otf"):
-			print "Skipping Font %s"%(file)
+		
 		else:
 			output.write("""
 		[Embed(source="%s")]

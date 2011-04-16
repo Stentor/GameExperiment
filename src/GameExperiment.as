@@ -14,6 +14,7 @@
     import com.pblabs.rendering2D.spritesheet.SpriteSheetComponent;
     import com.pblabs.rendering2D.ui.SceneView;
     
+    import com.pblabs.engine.debug.Console;
     import com.pblabs.engine.debug.UIAppender;
     
 	import flash.display.Sprite;
@@ -21,6 +22,7 @@
 	[SWF(width="800", height="600", frameRate="30", backgroundColor="0x000000")]
 	public class GameExperiment extends Sprite
 	{
+		private var _logConsole:UIAppender;
 		public function GameExperiment()
 		{
 			// Make sure all the types our XML will use are registered.
@@ -49,7 +51,8 @@
             sv.width = 800;
             sv.height = 600;
             addChild(sv);
-						
+			Console.hotKeyCode=112;
+			_logConsole=new UIAppender();			
             // Load the descriptions, and start up level 1.
             LevelManager.instance.load("../assets/xml/levelDescriptions.xml", 1);
 		}
