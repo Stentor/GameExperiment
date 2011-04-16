@@ -18,12 +18,18 @@
     import com.pblabs.engine.debug.UIAppender;
     
 	import flash.display.Sprite;
+	import flash.events.Event;
 	
-	[SWF(width="800", height="600", frameRate="30", backgroundColor="0x000000")]
+	[Frame(factoryClass="CustomPreloader")]
+	[SWF(width="800", height="600", frameRate="60", backgroundColor="0x000000")]
 	public class GameExperiment extends Sprite
 	{
 		private var _logConsole:UIAppender;
 		public function GameExperiment()
+		{
+			addEventListener(Event.ADDED_TO_STAGE, startup);
+		}
+		private function startup(e:Event):void
 		{
 			// Make sure all the types our XML will use are registered.
             PBE.registerType(com.pblabs.rendering2D.DisplayObjectScene);
@@ -52,7 +58,8 @@
             sv.height = 600;
             addChild(sv);
 			Console.hotKeyCode=112;
-			_logConsole=new UIAppender();			
+			_logConsole=new UIAppender();	
+					
             // Load the descriptions, and start up level 1.
             LevelManager.instance.load("../assets/xml/levelDescriptions.xml", 1);
 		}
