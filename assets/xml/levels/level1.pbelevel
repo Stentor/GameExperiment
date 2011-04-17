@@ -1,7 +1,7 @@
 <things version="1">
 
 	<entity name="Scene">
-		<component type="com.pblabs.rendering2D.DisplayObjectScene" name="Scene">
+		<component type="com.pblabs.rendering2D.BitmapDataScene" name="Scene">
 			<sceneViewName>MainView</sceneViewName>
 			<position>
 				<x>0</x>
@@ -43,7 +43,7 @@
 				<x>0</x>
 				<y>0</y>
 			</position>
-			<rotation>30</rotation>
+			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
 			<animations>
@@ -57,6 +57,19 @@
 			</animations>
 			<defaultAnimation>idle</defaultAnimation>
 			<reference>@Render.spriteIndex</reference>
+		</component>
+		<component type="com.h4ostudio.components.ShipControllerComponent" name="InputManager">
+			<positionReference>@Spatial.position</positionReference>
+			<movementRate>
+				<x>150</x>
+				<y>200</y>
+			</movementRate>
+			<input>
+				<GoLeft>LEFT</GoLeft>
+				<GoRight>RIGHT</GoRight>
+				<GoUp>UP</GoUp>
+				<GoDown>DOWN</GoDown>
+			</input>
 		</component>
 	</entity>
 	

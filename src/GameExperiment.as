@@ -13,6 +13,7 @@
     import com.pblabs.rendering2D.spritesheet.CellCountDivider;
     import com.pblabs.rendering2D.spritesheet.SpriteSheetComponent;
     import com.pblabs.rendering2D.ui.SceneView;
+    import com.h4ostudio.components.ShipControllerComponent;
     
     import com.pblabs.engine.debug.Console;
     import com.pblabs.engine.debug.UIAppender;
@@ -29,6 +30,7 @@
 		{
 			addEventListener(Event.ADDED_TO_STAGE, startup);
 		}
+		
 		private function startup(e:Event):void
 		{
 			// Make sure all the types our XML will use are registered.
@@ -42,6 +44,7 @@
             PBE.registerType(com.pblabs.rendering2D.ui.SceneView);
             PBE.registerType(com.pblabs.animation.AnimatorComponent);
             PBE.registerType(com.pblabs.animation.FrameAnimator);
+            PBE.registerType(com.h4ostudio.components.ShipControllerComponent);
         
             // Initialize the engine!
             PBE.startup(this);
