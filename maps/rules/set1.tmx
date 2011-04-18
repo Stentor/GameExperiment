@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="20" tileheight="20">
+ <properties>
+  <property name="AutomapRadius" value="1"/>
+  <property name="DeleteTiles" value="1"/>
+ </properties>
+ <tileset firstgid="1" name="tileset" tilewidth="20" tileheight="20">
+  <image source="../tileset.png" trans="ff00ff" width="560" height="320"/>
+ </tileset>
+ <tileset firstgid="449" name="map_helper" tilewidth="20" tileheight="20">
+  <image source="../map_helper.png" width="160" height="100"/>
+ </tileset>
+ <layer name="ruleRegions" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzjEKACEQA8D4/1f5s0MrCzlQEC1mYElgmyRJLenkXr6u7Rw33+iz38v+dp/sZXIAAAAAAKz7AFrgP64=
+  </data>
+ </layer>
+ <layer name="ruleSet" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztkksOglAQBPvd/1Z8BfELeh6ZWCaz0biEpCtojSs7TRdJVZHWRzVucIs73ONDfK0M/B7xEU/4hM/4gq/4hu94xgt+8D8VrvE/+cqXfCKfyCfyiXwin8gn8ulHvq0T/eUOc48Nd3TZckefHXd02nNHr/ndD9zR78gdHeeep9TRs7w/n3vL5Hyxk7yVvJe8mbybvJ28n5k7NrRwx472siVjjDHGGGOMMcYYY4zZCy/p30Nh
+  </data>
+ </layer>
+ <layer name="rule_floor" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztkjEKg1AUBPefJJBWSJVGCAip0+YgyT08iJVtICB4sygZYf8NFHbgOchvlmUlaVquLPfGt/L3i/8TPuMWX/ATX/EXj/heane4533ADZ7xY/2QT+QT+UQ+kU/kE/lEPpFP5BP5RD6Ry93hnvcBN3jGW769M6nu0Hv0Lr1P79R79W69X+/Ye966XvlwMu8Vzzeq3orvxTfju/Ht+H58Q76jo2wphBBCCCGEEEIIIYQQjsIPoEYhrA==
+  </data>
+ </layer>
+</map>
