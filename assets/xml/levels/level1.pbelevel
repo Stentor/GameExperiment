@@ -58,7 +58,6 @@
 				<y>3000</y>
 			</position>
 			
-			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
 			<animations>
