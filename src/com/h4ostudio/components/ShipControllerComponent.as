@@ -1,16 +1,20 @@
 package com.h4ostudio.components
 {
 	import com.pblabs.engine.components.TickedComponent;
-	import com.pblabs.engine.entity.PropertyReference;
+	import com.pblabs.rendering2D.IMobileSpatialObject2D;
+	import com.pblabs.rendering2D.IScene2D;
 	import com.pblabs.engine.core.InputMap;
 	import com.pblabs.engine.debug.Logger;
 	
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	public class ShipControllerComponent extends TickedComponent
 	{
-		public var positionReference:PropertyReference;
 		public var movementRate:Point;
+		
+		public var scene:IScene2D;
+		public var spatial:IMobileSpatialObject2D;
 		
 		private var _inputMap:InputMap;
 		private var _left:Number=0;
@@ -39,13 +43,29 @@ package com.h4ostudio.components
 		{
 			var directionX:Number = _right - _left;
 			var directionY:Number = _down - _up;
+			if(spatial)
+			{
+				var pos:Point=spatial.position;
+				var extents:Rectangle=spatial.worldExtents;
+				var world:Rectangle=scene.trackLimitRectangle;
 			
-			var pos:Point=owner.getProperty(positionReference) as Point;
-			
-			pos.x+=movementRate.x*directionX*tickRate;
-			pos.y+=movementRate.y*directionY*tickRate;
-			
-			owner.setProperty(positionReference,pos);
+				pos.x+=movementRate.x*directionX*tickRate;
+				pos.y+=movementRate.y*directionY*tickRate;
+								
+				
+				if (extents.right>world.right)
+						pos.x+=world.right-extents.right;
+				if (extents.left<world.left)
+						pos.x+=world.left-extents.left;
+				if (extents.top<world.top)
+						pos.y+=world.top-extents.top;
+				if (extents.bottom>world.bottom)
+						pos.y+=world.bottom-extents.bottom;
+				
+				spatial.position=pos;
+			}
+			else
+				Logger.print(this,"no spatial");
 		}
 		
 		private function onLeft(value:Number):void

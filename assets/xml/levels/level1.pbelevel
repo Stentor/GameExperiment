@@ -7,6 +7,13 @@
 				<x>0</x>
 				<y>0</y>
 			</position>
+			<trackObject componentReference="Ship" componentName="Render" />
+			<trackLimitRectangle>
+				<x>0</x>
+				<y>0</y>
+				<width>896</width>
+				<height>6000</height>
+			</trackLimitRectangle>
 		</component>
 	</entity>
 	
@@ -25,6 +32,12 @@
 		</component>
 	</entity>
 	
+	<entity name="BgSpriteSheet">
+		<component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="SpriteSheet">
+			<imageFilename>../assets/img/bg.jpg</imageFilename>
+		</component>
+	</entity>
+	
 	<entity name="Ship">
 		<component type="com.pblabs.rendering2D.SpriteSheetRenderer" name="Render">
 			<scene componentReference="Scene" componentName="Scene"/>
@@ -32,6 +45,7 @@
 			<positionProperty>@Spatial.position</positionProperty>
 			<rotationProperty>@Spatial.rotation</rotationProperty>
 			<sizeProperty>@Spatial.size</sizeProperty>
+			<layerIndex>1</layerIndex>
 		</component>
 		<component type="com.pblabs.rendering2D.SimpleSpatialComponent" name="Spatial">
 			<spatialManager componentReference="SpatialDB"/>
@@ -40,9 +54,10 @@
 				<y>64</y>
 			</size>
 			<position>
-				<x>0</x>
-				<y>0</y>
+				<x>448</x>
+				<y>3000</y>
 			</position>
+			
 			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
@@ -59,7 +74,8 @@
 			<reference>@Render.spriteIndex</reference>
 		</component>
 		<component type="com.h4ostudio.components.ShipControllerComponent" name="InputManager">
-			<positionReference>@Spatial.position</positionReference>
+			<scene componentReference="Scene" name="Scene"/>
+			<spatial componentReference="Ship" name="Spatial"/>
 			<movementRate>
 				<x>150</x>
 				<y>200</y>
@@ -73,11 +89,29 @@
 		</component>
 	</entity>
 	
+	<entity name="Background">
+		<component type="com.pblabs.rendering2D.SpriteSheetRenderer" name="Render">
+			<scene componentReference="Scene" componentName="Scene"/>
+			<spriteSheet componentReference="BgSpriteSheet"/>
+			<position>
+				<x>448</x>
+				<y>3000</y>
+			</position>
+			<size>
+				<x>896</x>
+				<y>640</y>
+			</size>
+			<layerIndex>0</layerIndex>
+		</component>
+	</entity>
+	
 	<group name="All">
 		<objectReference name="Scene"/>
         <objectReference name="SpatialDB"/>
         <objectReference name="ShipSpriteSheet"/>
         <objectReference name="Ship"/>
+        <objectReference name="Background"/>
+        <objectReference name="BgSpriteSheet"/>
 	</group>
 	
 </things>
