@@ -1,7 +1,7 @@
 <things version="1">
 
 	<entity name="Scene">
-		<component type="com.pblabs.rendering2D.BitmapDataScene" name="Scene">
+		<component type="com.pblabs.rendering2D.DisplayObjectScene" name="Scene">
 			<sceneViewName>MainView</sceneViewName>
 			<position>
 				<x>0</x>
@@ -56,8 +56,7 @@
 			<position>
 				<x>448</x>
 				<y>3000</y>
-			</position>
-			
+			</position>			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
 			<animations>

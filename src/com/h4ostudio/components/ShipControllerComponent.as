@@ -49,6 +49,9 @@ package com.h4ostudio.components
 				var pos:Point=spatial.position;
 				var extents:Rectangle=spatial.worldExtents;
 				var world:Rectangle=scene.trackLimitRectangle;
+				
+				if(directionX!=0 || directionY!=0)
+					spatial.rotation=90+PBUtil.getDegreesFromRadians(Math.atan2(directionY,directionX));
 			
 				pos.x+=movementRate.x*directionX*tickRate;
 				pos.y+=movementRate.y*directionY*tickRate;
