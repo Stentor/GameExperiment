@@ -13,6 +13,7 @@
     import com.pblabs.rendering2D.spritesheet.CellCountDivider;
     import com.pblabs.rendering2D.spritesheet.SpriteSheetComponent;
     import com.pblabs.rendering2D.ui.SceneView;
+    import com.pblabs.sound.BackgroundMusicComponent;
     import com.h4ostudio.components.ShipControllerComponent;
     
     import com.pblabs.engine.debug.Console;
@@ -44,6 +45,7 @@
             PBE.registerType(com.pblabs.rendering2D.ui.SceneView);
             PBE.registerType(com.pblabs.animation.AnimatorComponent);
             PBE.registerType(com.pblabs.animation.FrameAnimator);
+            PBE.registerType(com.pblabs.sound.BackgroundMusicComponent);
             PBE.registerType(com.h4ostudio.components.ShipControllerComponent);
         
             // Initialize the engine!

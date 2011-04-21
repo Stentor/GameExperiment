@@ -17,6 +17,12 @@
 		</component>
 	</entity>
 	
+	<entity name="BGMusic">
+		<component type="com.pblabs.sound.BackgroundMusicComponent" name="MusicPlayer">
+			<musicUrl>../assets/music/track1.mp3</musicUrl>
+		</component>
+	</entity>
+	
 	<entity name="SpatialDB">
 		<component type="com.pblabs.rendering2D.BasicSpatialManager2D" name="Manager" >
 		</component>
@@ -105,6 +111,7 @@
 	
 	<group name="All">
 		<objectReference name="Scene"/>
+		<objectReference name="BGMusic"/>
         <objectReference name="SpatialDB"/>
         <objectReference name="ShipSpriteSheet"/>
         <objectReference name="Ship"/>

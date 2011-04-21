@@ -17,5 +17,8 @@ package
 		[Embed(source="../assets/img/Ship.png")]
 		public var __ASSETS_IMG_SHIP_PNG:Class;		
 			
+		[Embed(source="../assets/music/track1.mp3")]
+		public var __ASSETS_MUSIC_TRACK1_MP3:Class;		
+			
 	}
 }
