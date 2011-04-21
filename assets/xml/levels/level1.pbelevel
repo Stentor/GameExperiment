@@ -12,7 +12,7 @@
 				<x>0</x>
 				<y>0</y>
 				<width>896</width>
-				<height>6000</height>
+				<height>640</height>
 			</trackLimitRectangle>
 		</component>
 	</entity>
@@ -55,7 +55,7 @@
 			</size>
 			<position>
 				<x>448</x>
-				<y>3000</y>
+				<y>320</y>
 			</position>			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
@@ -93,7 +93,7 @@
 			<spriteSheet componentReference="BgSpriteSheet"/>
 			<position>
 				<x>448</x>
-				<y>3000</y>
+				<y>320</y>
 			</position>
 			<size>
 				<x>896</x>
