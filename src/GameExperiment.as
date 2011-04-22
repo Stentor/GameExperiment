@@ -17,6 +17,7 @@
     import com.h4ostudio.components.ShipControllerComponent;
     
     import com.pblabs.engine.debug.Console;
+    import com.pblabs.engine.core.InputKey;
     import com.pblabs.engine.debug.UIAppender;
     
 	import flash.display.Sprite;
@@ -62,8 +63,8 @@
             sv.width = 800;
             sv.height = 600;
             addChild(sv);
-			Console.hotKeyCode=112;
-			_logConsole=new UIAppender();	
+			Console.hotKeyCode=InputKey.F1.keyCode;
+			//_logConsole=new UIAppender();	
 					
             // Load the descriptions, and start up level 1.
             LevelManager.instance.load("../assets/xml/levelDescriptions.xml", 1);

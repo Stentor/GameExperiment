@@ -62,8 +62,7 @@ package com.h4ostudio.components
 				
 				spatial.position=pos;
 			}
-			else
-				Logger.print(this,"no spatial");
+			
 		}
 		
 		private function onLeft(value:Number):void
