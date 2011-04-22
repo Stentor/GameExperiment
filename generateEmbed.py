@@ -27,7 +27,7 @@ for root, subFolders, files in os.walk('assets'):
 	for file in files:
 		extension=file.split('.')[-1]
 		
-		if (extension.lower() in ("xml","pbelevel")):
+		if (extension.lower() in ("xml","pbelevel","tmx")):
 			output.write("""
 		[Embed(source="%s",mimeType="application/octet-stream")]
 		public var %s:Class;		

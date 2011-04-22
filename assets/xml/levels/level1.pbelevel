@@ -77,7 +77,7 @@
 			<defaultAnimation>idle</defaultAnimation>
 			<reference>@Render.spriteIndex</reference>
 		</component>
-		<component type="com.h4ostudio.components.ShipControllerComponent" name="InputManager">
+		<component type="game.components.ShipControllerComponent" name="InputManager">
 			<scene componentReference="Scene" name="Scene"/>
 			<spatial componentReference="Ship" name="Spatial"/>
 			<movementRate>
@@ -109,6 +109,12 @@
 		</component>
 	</entity>
 	
+	<entity name="Tilemap">
+		<component type="com.h4ostudio.tilemaps.TilemapComponent" name="Tilemap">
+			<tilemapUrl>../assets/maps/test.tmx</tilemapUrl>
+		</component>
+	</entity>
+	
 	<group name="All">
 		<objectReference name="Scene"/>
 		<objectReference name="BGMusic"/>
@@ -116,6 +122,7 @@
         <objectReference name="ShipSpriteSheet"/>
         <objectReference name="Ship"/>
         <objectReference name="Background"/>
+        <objectReference name="Tilemap" />
         <objectReference name="BgSpriteSheet"/>
 	</group>
 	

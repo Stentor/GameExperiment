@@ -1,4 +1,4 @@
-package com.h4ostudio.components
+package game.components
 {
 	import com.pblabs.engine.components.TickedComponent;
 	import com.pblabs.rendering2D.IMobileSpatialObject2D;

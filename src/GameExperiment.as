@@ -3,6 +3,7 @@
 	import com.pblabs.animation.AnimatorComponent;
 	import com.pblabs.animation.FrameAnimator;
     import com.pblabs.engine.PBE;
+    import com.pblabs.engine.resource.ResourceBundle;
     import com.pblabs.engine.core.LevelManager;
     import com.pblabs.engine.resource.Resource;
     import com.pblabs.rendering2D.BasicSpatialManager2D;
@@ -14,7 +15,10 @@
     import com.pblabs.rendering2D.spritesheet.SpriteSheetComponent;
     import com.pblabs.rendering2D.ui.SceneView;
     import com.pblabs.sound.BackgroundMusicComponent;
-    import com.h4ostudio.components.ShipControllerComponent;
+    
+    import com.h4ostudio.tilemaps.TilemapComponent;
+    
+    import game.components.ShipControllerComponent;
     
     import com.pblabs.engine.debug.Console;
     import com.pblabs.engine.core.InputKey;
@@ -47,7 +51,11 @@
             PBE.registerType(com.pblabs.animation.AnimatorComponent);
             PBE.registerType(com.pblabs.animation.FrameAnimator);
             PBE.registerType(com.pblabs.sound.BackgroundMusicComponent);
-            PBE.registerType(com.h4ostudio.components.ShipControllerComponent);
+            PBE.registerType(com.h4ostudio.tilemaps.TilemapComponent);
+            PBE.registerType(game.components.ShipControllerComponent);
+            
+            // Register the tiled filetype
+            ResourceBundle.ExtensionTypes.tmx = "com.pblabs.engine.resource.XMLResource";
         
             // Initialize the engine!
             PBE.startup(this);
