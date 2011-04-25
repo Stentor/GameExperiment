@@ -16,10 +16,10 @@
  </layer>
  <layer name="ruleSet" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1EsOABAMRVH2v6xOLMtARMnrUFRyz8Rv8qKlFAC4x+oYW13rOc/A51Jnah//8DX0vdeC+Yt8KseZlT7U7KiviTt7+edEOaLc2GV/B1n6DAAAAAAQ60cTJTk=
+   eJzt1EsOABAMRVH2v6uOLMtARMnrUFRyz8Rv8qKlFAC4x+oYW13rOc/A51Jnah//8DX0vdeC+Yt8KseZlT7U7KiviTt7+edEOaLc2GV/B1n6DAAAAAAQ67jtJSE=
   </data>
  </layer>
- <layer name="rule_floor" width="40" height="40">
+ <layer name="rule_floor" width="40" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1W0KgCAMgGE9RnSOiu5P3qPu0QfipJC0P6FG7/NnNZOGtKWUo1VabP1pH4B/2ySOEht9XtfA19LfDDO71jLksnv7yI3EKciPQSwhfLe/n4P8kqGWr9olrpdc7FxzS9UxyIfeMWOibM9e+9Qkni3B1uR7c1Z1/dsAAAAAAM4BcUYOBg==
   </data>
