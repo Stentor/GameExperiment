@@ -5,10 +5,10 @@
   <property name="DeleteTiles" value="1"/>
  </properties>
  <tileset firstgid="1" name="tileset" tilewidth="20" tileheight="20">
-  <image source="../../assets/img/tileset.png" trans="ff00ff" width="560" height="320"/>
+  <image source="../tileset.png" trans="ff00ff" width="560" height="320"/>
  </tileset>
  <tileset firstgid="449" name="map_helper" tilewidth="20" tileheight="20">
-  <image source="../../assets/img/map_helper.png" width="160" height="100"/>
+  <image source="../map_helper.png" width="160" height="100"/>
  </tileset>
  <layer name="ruleRegions" width="40" height="40">
   <data encoding="base64" compression="zlib">

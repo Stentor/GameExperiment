@@ -1,1 +1,2 @@
 ./rules/set1.tmx
+./rules/set2.tmx
