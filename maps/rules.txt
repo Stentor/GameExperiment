@@ -1,1 +1,7 @@
 ./rules/set1.tmx
+./rules/set2.tmx
+./rules/set3.tmx
+./rules/set4.tmx
+./rules/set5.tmx
+./rules/set6.tmx
+./rules/set7.tmx

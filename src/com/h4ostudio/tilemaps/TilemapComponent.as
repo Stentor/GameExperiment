@@ -62,19 +62,20 @@ package com.h4ostudio.tilemaps
 				divider.width=t.@tilewidth;
 				sheet.divider=divider;
 				owner.addComponent(sheet,t.@name);
-				_sheets[t.@firstgid]=sheet;
-				
+				_sheets[t.@firstgid]=sheet;				
 			}
 			setTimeout(checkLoaded,100);
 		}
+		
 		private function checkLoaded():void
 		{
 			for (var s:* in _sheets)
 			{
-				Logger.print(this,sprintf("GID: %s -> Loaded %d frames from %s",
+				Logger.print(this,sprintf("GID: %d -> Loaded %d frames from %s",
 							s,_sheets[s].frameCount,_sheets[s].imageFilename));
 			}
 		}
+		
 		private function onMapFailed(r:XMLResource):void
 		{
 			Logger.error(this,"onMapFailed","Couldn't load map " + _tilemapUrl);

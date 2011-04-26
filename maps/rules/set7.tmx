@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="20" tileheight="20">
+ <properties>
+  <property name="AutomapRadius" value="1"/>
+ </properties>
+ <tileset firstgid="1" name="tileset" tilewidth="20" tileheight="20">
+  <image source="../../assets/img/tileset.png" trans="ff00ff" width="560" height="320"/>
+ </tileset>
+ <tileset firstgid="449" name="map_helper" tilewidth="20" tileheight="20">
+  <image source="../../assets/img/map_helper.png" width="160" height="100"/>
+ </tileset>
+ <layer name="ruleRegions" width="40" height="40" opacity="0.85">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKADEIBEDz/1flZ1eEgKS6coUZEC1XrQKSrKem2+vs0fudE/Z78/W6WZmr//DPLN8s6fdLz5cu/U7p+QAAAKj6AOpdJG4=
+  </data>
+ </layer>
+ <layer name="ruleSet" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1EsOABAMRVH2v6yO7clARMnrUFRyz8Rv8qKlFAC4x+oYW13rOc/A51Jnah//8DX0vdeC+Yt8KseZlT7U7KiviTt7+edEOaLc2GV/B1n6DAAAAAAQ61izJbE=
+  </data>
+ </layer>
+ <layer name="rule_floor" width="40" height="40" opacity="0.51">
+  <data encoding="base64" compression="zlib">
+   eJzt1dEJgCAUhWGbM/ewOao5onc3qIYK8QoiaC+hRv/3ckqLDsFFpbxBleX2n94D8G+LpJXcousehC5nZm+v2AXe2+eKlhyTdZtkC+m3w71J1qcKXb5qlZyjtdx/ra3U45I8KnX5Ijez8ZzqwrMtuE5hNo3q62wDAAAAAHg3TysUeQ==
+  </data>
+ </layer>
+</map>
