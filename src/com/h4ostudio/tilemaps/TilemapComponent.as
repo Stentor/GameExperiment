@@ -64,6 +64,17 @@ package com.h4ostudio.tilemaps
 				owner.addComponent(sheet,t.@name);
 				_sheets[t.@firstgid]=sheet;				
 			}
+			for each (var l:XML in r.XMLData.layer)
+			{
+				if (l.@visible!=0)
+				{
+					Logger.print(this,sprintf("Adding Layer %s",l.@name));
+				}
+				else
+				{
+					Logger.print(this,sprintf("Layer %s is not visible, skipping",l.@name));
+				}
+			}
 			setTimeout(checkLoaded,100);
 		}
 		

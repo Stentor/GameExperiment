@@ -42,8 +42,7 @@ package
 			{
 				removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 				init();
-			}
-			
+			}			
 		}
 
 		private function init():void
