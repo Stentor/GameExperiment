@@ -65,20 +65,18 @@ package com.h4ostudio.tilemaps
 			}
 		}
 		
-		public function queryVisibleTiles(scene:IScene2D,pos:Point):Array
+		public function queryVisibleTiles(scene:IScene2D):Array
 		{
-			var rect:Rectangle=new Rectangle(pos.x-scene.sceneView.width/2,
-									pos.y-scene.sceneView.height/2,
-									scene.sceneView.width,
-									scene.sceneView.height);
+			var pos:Point=scene.sceneViewBounds.topLeft;
 			var result:Array=new Array();
 			var resultX:int=0;						
 			var resultY:int=0;						
-			for (var y:int=Math.floor(rect.top/_tileheight);y<Math.floor(rect.height/_tileheight)+1;y++)
+			for (var y:int=Math.floor(pos.y/_tileheight);y<Math.floor((pos.y+scene.sceneViewBounds.height)/_tileheight)+1;y++)
 			{
-				for (var x:int=Math.floor(rect.left/_tilewidth);x<Math.floor(rect.width/_tilewidth)+1;x++)
+				for (var x:int=Math.floor(pos.x/_tilewidth);x<Math.floor((pos.x+scene.sceneViewBounds.width)/_tilewidth)+1;x++)
 				{
-					result[resultX][resultY]=_data[x][y]
+					if (_data[x][y])
+						result[resultX][resultY]=_data[x][y];
 					resultX++;
 				}
 				resultY++;
