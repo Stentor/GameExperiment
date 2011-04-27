@@ -1,5 +1,6 @@
 package game.components
 {
+	import com.pblabs.engine.core.sprintf;
 	import com.pblabs.engine.components.TickedComponent;
 	import com.pblabs.rendering2D.IMobileSpatialObject2D;
 	import com.pblabs.rendering2D.IScene2D;
@@ -56,11 +57,13 @@ package game.components
 				pos.x+=movementRate.x*directionX*tickRate;
 				pos.y+=movementRate.y*directionY*tickRate;
 								
-				pos.x=PBUtil.clamp(pos.x,world.left+extents.width/2,world.right-extents.width/2);
-				pos.y=PBUtil.clamp(pos.y,world.top+extents.height/2,world.bottom-extents.height/2);
+				if (world)
+				{
+					pos.x=PBUtil.clamp(pos.x,world.left+extents.width/2,world.right-extents.width/2);
+					pos.y=PBUtil.clamp(pos.y,world.top+extents.height/2,world.bottom-extents.height/2);
+				}
 				
-				
-				spatial.position=pos;
+				spatial.position=pos;				
 			}
 			
 		}

@@ -8,12 +8,7 @@
 				<y>0</y>
 			</position>
 			<trackObject componentReference="Ship" componentName="Render" />
-			<trackLimitRectangle>
-				<x>0</x>
-				<y>0</y>
-				<width>896</width>
-				<height>640</height>
-			</trackLimitRectangle>
+			
 		</component>
 	</entity>
 	
@@ -38,11 +33,7 @@
 		</component>
 	</entity>
 	
-	<entity name="BgSpriteSheet">
-		<component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="SpriteSheet">
-			<imageFilename>../assets/img/bg.jpg</imageFilename>
-		</component>
-	</entity>
+	
 	
 	<entity name="Ship">
 		<component type="com.pblabs.rendering2D.SpriteSheetRenderer" name="Render">
@@ -112,6 +103,7 @@
 	<entity name="Tilemap">
 		<component type="com.h4ostudio.tilemaps.TilemapComponent" name="Tilemap">
 			<tilemapUrl>../assets/maps/test.tmx</tilemapUrl>
+			<scene componentReference="Scene" componentName="Scene"/>
 		</component>
 	</entity>
 	
@@ -121,9 +113,9 @@
         <objectReference name="SpatialDB"/>
         <objectReference name="ShipSpriteSheet"/>
         <objectReference name="Ship"/>
-        <objectReference name="Background"/>
+        <!--<objectReference name="Background"/>-->
         <objectReference name="Tilemap" />
-        <objectReference name="BgSpriteSheet"/>
+        <!--<objectReference name="BgSpriteSheet"/>-->
 	</group>
 	
 </things>

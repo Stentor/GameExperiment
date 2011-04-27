@@ -8,9 +8,11 @@ package com.h4ostudio.tilemaps
 	import com.pblabs.engine.debug.Logger;
 	import com.pblabs.rendering2D.spritesheet.SpriteSheetComponent;
 	import com.pblabs.rendering2D.spritesheet.FixedSizeDivider;
+	import com.pblabs.rendering2D.IScene2D;
 	
 	import flash.utils.Dictionary;
 	import flash.utils.setTimeout;
+	import flash.geom.Rectangle;
 	
 	public class TilemapComponent extends EntityComponent
 	{
@@ -19,6 +21,8 @@ package com.h4ostudio.tilemaps
 		private var _tileInfos:Array=new Array();
 		private var _layers:Array=new Array();
 		private var _sheets:Dictionary=new Dictionary();
+		
+		public var scene:IScene2D;
 		
 		public function get tilemapUrl():String
 		{
@@ -53,6 +57,12 @@ package com.h4ostudio.tilemaps
 		private function onMapLoaded(r:XMLResource):void
 		{
 			_tileResource=r;
+			if (scene)
+			{
+				scene.trackLimitRectangle=new Rectangle(0,0,
+							r.XMLData.@width*r.XMLData.@tilewidth,
+							r.XMLData.@height*r.XMLData.@tileheight);
+			}
 			for each (var t:XML in r.XMLData.tileset)
 			{
 				var sheet:SpriteSheetComponent=new SpriteSheetComponent();
@@ -69,6 +79,9 @@ package com.h4ostudio.tilemaps
 				if (l.@visible!=0)
 				{
 					Logger.print(this,sprintf("Adding Layer %s",l.@name));
+					var layer:TilemapLayer=new TilemapLayer(r.XMLData.@tilewidth,r.XMLData.@tilewidth,
+									l.@width,l.@height,l.data[0],l.data.@encoding);
+					_layers.push(layer);
 				}
 				else
 				{
