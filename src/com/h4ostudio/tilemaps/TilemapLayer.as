@@ -15,7 +15,7 @@ package com.h4ostudio.tilemaps
 		private var _width:int;
 		private var _height:int;
 		
-		public function TilemapLayer(tilewidth:int,tileheight:width,width:int,height:int,data:XML,encoding:String):void
+		public function TilemapLayer(tilewidth:int,tileheight:int,width:int,height:int,data:XML,encoding:String):void
 		{
 			_tilewidth=tilewidth;
 			_tileheight=tileheight;
