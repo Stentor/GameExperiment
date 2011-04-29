@@ -5,6 +5,7 @@ package com.h4ostudio.tilemaps
 	import com.pblabs.engine.resource.ResourceManager;
 	import com.pblabs.engine.resource.ImageResource;
 	import com.pblabs.engine.resource.XMLResource;
+	import com.pblabs.engine.resource.Resource;
 	import com.pblabs.engine.entity.EntityComponent;
 	import com.pblabs.engine.debug.Logger;
 	import com.pblabs.rendering2D.spritesheet.SpriteSheetComponent;
@@ -13,6 +14,7 @@ package com.h4ostudio.tilemaps
 	
 	import flash.utils.Dictionary;
 	import flash.utils.setTimeout;
+	import flash.display.BitmapData;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
 	
@@ -22,7 +24,7 @@ package com.h4ostudio.tilemaps
 		private var _tileResource:XMLResource;
 		private var _tileInfos:Array=new Array();
 		private var _layers:Array=new Array();
-		private var _sheets:Dictionary=new Dictionary();
+		private var _sheets:Object=new Object();
 		private var _tiles:Array=new Array();
 		private var _tileSize:Point;
 		
@@ -72,7 +74,7 @@ package com.h4ostudio.tilemaps
 			for each (var t:XML in r.XMLData.tileset)
 			{
 				_sheets[t.image.@source]=t.@firstgid;
-				ResourceManager.load(t.image.@source,ImageResource,onTilesetLoaded,onError);	
+				PBE.resourceManager.load(t.image.@source,ImageResource,onTilesetLoaded,onError);	
 			}
 			for each (var l:XML in r.XMLData.layer)
 			{
@@ -88,7 +90,6 @@ package com.h4ostudio.tilemaps
 					Logger.print(this,sprintf("Layer %s is not visible, skipping",l.@name));
 				}
 			}
-			setTimeout(checkLoaded,100);
 		}
 		
 		private function onTilesetLoaded(r:ImageResource):void
@@ -99,8 +100,21 @@ package com.h4ostudio.tilemaps
 		
 		private function split(img:BitmapData,tileSize:Point,gid:int):void
 		{
-			
+			var count:int=0;
+			for (var y:int=0;y<Math.floor(img.height/tileSize.y);y++)
+			{
+				for (var x:int=0;x<Math.floor(img.width/tileSize.x);x++)
+				{
+					var tmp:BitmapData=new BitmapData(tileSize.x,tileSize.y);
+					var destRect:Rectangle=new Rectangle(x*tileSize.x,y*tileSize.y,tileSize.x,tileSize.y);
+					tmp.copyPixels(img,destRect,new Point(0,0));
+					_tiles[Math.floor(img.width/tileSize.x)*y+x+gid]=tmp;
+					count++;
+				}
+			}
+			Logger.print(this,sprintf("Gid : %d has %d tiles",gid,count));
 		}
+		
 		private function onError(r:Resource):void
 		{
 			Logger.error(this,"onError","Couldn't load ...");
