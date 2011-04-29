@@ -3,6 +3,7 @@ package com.h4ostudio.tilemaps
 	import com.pblabs.engine.PBE;
 	import com.pblabs.engine.core.sprintf;
 	import com.pblabs.engine.resource.ResourceManager;
+	import com.pblabs.engine.resource.ImageResource;
 	import com.pblabs.engine.resource.XMLResource;
 	import com.pblabs.engine.entity.EntityComponent;
 	import com.pblabs.engine.debug.Logger;
@@ -13,6 +14,7 @@ package com.h4ostudio.tilemaps
 	import flash.utils.Dictionary;
 	import flash.utils.setTimeout;
 	import flash.geom.Rectangle;
+	import flash.geom.Point;
 	
 	public class TilemapComponent extends EntityComponent
 	{
@@ -21,6 +23,8 @@ package com.h4ostudio.tilemaps
 		private var _tileInfos:Array=new Array();
 		private var _layers:Array=new Array();
 		private var _sheets:Dictionary=new Dictionary();
+		private var _tiles:Array=new Array();
+		private var _tileSize:Point;
 		
 		public var scene:IScene2D;
 		
@@ -32,7 +36,7 @@ package com.h4ostudio.tilemaps
 		public function set tilemapUrl(s:String):void
 		{
 			_tilemapUrl=s;
-			PBE.resourceManager.load(s,XMLResource,onMapLoaded,onMapFailed);
+			PBE.resourceManager.load(s,XMLResource,onMapLoaded,onError);
 		}
 		
 		public function getTileInfo(index:int):TileProperty
@@ -57,6 +61,8 @@ package com.h4ostudio.tilemaps
 		private function onMapLoaded(r:XMLResource):void
 		{
 			_tileResource=r;
+			_tileSize=new Point(r.XMLData.@tilewidth,r.XMLData.@tileheight);
+			
 			if (scene)
 			{
 				scene.trackLimitRectangle=new Rectangle(0,0,
@@ -65,14 +71,8 @@ package com.h4ostudio.tilemaps
 			}
 			for each (var t:XML in r.XMLData.tileset)
 			{
-				var sheet:SpriteSheetComponent=new SpriteSheetComponent();
-				sheet.imageFilename=t.image.@source;
-				var divider:FixedSizeDivider=new FixedSizeDivider();
-				divider.height=t.@tileheight;
-				divider.width=t.@tilewidth;
-				sheet.divider=divider;
-				owner.addComponent(sheet,t.@name);
-				_sheets[t.@firstgid]=sheet;				
+				_sheets[t.image.@source]=t.@firstgid;
+				ResourceManager.load(t.image.@source,ImageResource,onTilesetLoaded,onError);	
 			}
 			for each (var l:XML in r.XMLData.layer)
 			{
@@ -91,18 +91,19 @@ package com.h4ostudio.tilemaps
 			setTimeout(checkLoaded,100);
 		}
 		
-		private function checkLoaded():void
+		private function onTilesetLoaded(r:ImageResource):void
 		{
-			for (var s:* in _sheets)
-			{
-				Logger.print(this,sprintf("GID: %d -> Loaded %d frames from %s",
-							s,_sheets[s].frameCount,_sheets[s].imageFilename));
-			}
+			var gid:int=_sheets[r.filename];
+			split(r.image.bitmapData,_tileSize,gid);
 		}
 		
-		private function onMapFailed(r:XMLResource):void
+		private function split(img:BitmapData,tileSize:Point,gid:int):void
 		{
-			Logger.error(this,"onMapFailed","Couldn't load map " + _tilemapUrl);
+			
+		}
+		private function onError(r:Resource):void
+		{
+			Logger.error(this,"onError","Couldn't load ...");
 		}
 	}
 }

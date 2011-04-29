@@ -76,6 +76,8 @@ package com.h4ostudio.tilemaps
 				for (var x:int=Math.floor(pos.x/_tilewidth);x<Math.floor((pos.x+scene.sceneViewBounds.width)/_tilewidth)+1;x++)
 				{
 					if (_data[x][y])
+						if (!result[resultX])
+							result[resultX]=new Array();
 						result[resultX][resultY]=_data[x][y];
 					resultX++;
 				}
