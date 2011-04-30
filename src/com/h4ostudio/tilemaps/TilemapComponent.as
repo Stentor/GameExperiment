@@ -84,6 +84,11 @@ package com.h4ostudio.tilemaps
 					var layer:TilemapLayer=new TilemapLayer(r.XMLData.@tilewidth,r.XMLData.@tilewidth,
 									l.@width,l.@height,l.data[0],l.data.@encoding);
 					_layers.push(layer);
+					var render:TilemapLayerRenderer=new TilemapLayerRenderer();
+					render.tileBank=_tiles;
+					render.tilemapLayer=layer;
+					render.scene=scene;
+					owner.addComponent(render,sprintf("Render%s",l.@name));
 				}
 				else
 				{
@@ -117,7 +122,7 @@ package com.h4ostudio.tilemaps
 		
 		private function onError(r:Resource):void
 		{
-			Logger.error(this,"onError","Couldn't load ...");
+			Logger.error(this,"onError",sprintf("Couldn't load %s !!",r.filename));
 		}
 	}
 }

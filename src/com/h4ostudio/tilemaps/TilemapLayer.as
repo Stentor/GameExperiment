@@ -65,26 +65,24 @@ package com.h4ostudio.tilemaps
 				}
 			}
 		}
-		
-		public function queryVisibleTiles(scene:IScene2D):Array
+		public function get tileSize():Point
 		{
-			var pos:Point=scene.sceneViewBounds.topLeft;
-			var result:Array=new Array();
-			var resultX:int=0;						
-			var resultY:int=0;						
-			for (var y:int=Math.floor(pos.y/_tileheight);y<Math.floor((pos.y+scene.sceneViewBounds.height)/_tileheight)+1;y++)
-			{
-				for (var x:int=Math.floor(pos.x/_tilewidth);x<Math.floor((pos.x+scene.sceneViewBounds.width)/_tilewidth)+1;x++)
-				{
-					if (_data[x][y])
-						if (!result[resultX])
-							result[resultX]=new Array();
-						result[resultX][resultY]=_data[x][y];
-					resultX++;
-				}
-				resultY++;
-			}
-			return result;
+			return new Point(_tilewidth,_tileheight);
+		}
+		public function get width():int
+		{
+			return _width;
+		}
+		public function get height():int
+		{
+			return _height;
+		}
+		public function getTile(x:int,y:int):int
+		{
+			if (_data[x][y])
+				return _data[x][y];
+			else 
+				return 0;
 		}
 	}
 }

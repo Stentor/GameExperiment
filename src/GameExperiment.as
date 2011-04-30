@@ -61,7 +61,7 @@
             PBE.startup(this);
             
             // Load resources.
-            // PBE.addResources(new EmbedResource());
+            PBE.addResources(new EmbedResource());
 
             // Set up the scene view.
             var sv:SceneView = new SceneView();
