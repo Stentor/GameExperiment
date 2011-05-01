@@ -14,9 +14,6 @@ package
 		[Embed(source="../assets/img/tileset.png")]
 		public var __ASSETS_IMG_TILESET_PNG:Class;		
 			
-		[Embed(source="../assets/img/bg.jpg")]
-		public var __ASSETS_IMG_BG_JPG:Class;		
-			
 		[Embed(source="../assets/xml/levelDescriptions.xml",mimeType="application/octet-stream")]
 		public var __ASSETS_XML_LEVELDESCRIPTIONS_XML:Class;		
 			

@@ -59,9 +59,10 @@ package com.h4ostudio.tilemaps
 			for (var y:int=0;y<d.length;y++)
 			{
 				var row:Array=d[y].split(',');
-				for (var x:int=0;x<row.length-1;x++)
+				for (var x:int=0;x<row.length;x++)
 				{
-					_data[x][y]=int(row[x]);
+					if (row[x])
+						_data[x][y]=int(row[x]);
 				}
 			}
 		}

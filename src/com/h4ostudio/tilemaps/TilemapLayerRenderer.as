@@ -2,6 +2,7 @@ package com.h4ostudio.tilemaps
 {
 	import com.pblabs.rendering2D.BitmapRenderer;
 	import com.pblabs.engine.debug.Logger;
+	import com.pblabs.engine.core.sprintf;
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -13,6 +14,9 @@ package com.h4ostudio.tilemaps
 		private var _tiles:Array;
 		private var _layer:TilemapLayer;
 		private var frameCache:BitmapData;
+		
+		public var parallaxFactorX:Number=1;
+		public var parallaxFactorY:Number=1;
 		
 		protected var _borkBitmap:BitmapData = new BitmapData(32, 32, true, 0x77FF00FF);
 		
@@ -48,6 +52,8 @@ package com.h4ostudio.tilemaps
 			
 			super.onFrame(elapsed);
 			position = screenPosition.clone();
+			screenPosition.x*=parallaxFactorX;
+			screenPosition.y*=parallaxFactorY;
 			updateTransform();
 			
 			var startX:int = (screenPosition.x / _layer.tileSize.x) - 1;
@@ -82,8 +88,8 @@ package com.h4ostudio.tilemaps
 					var p:Point = scene.transformWorldToScene(copyPoint);
 					
 					// And offset it to be relative to our bit_layer.
-					copyPoint.x = p.x - _position.x;
-					copyPoint.y = p.y - _position.y;
+					copyPoint.x = p.x - _position.x*parallaxFactorX;
+					copyPoint.y = p.y - _position.y*parallaxFactorY;
 					
 					if (_tiles[tileType])
 						frameCache.copyPixels(_tiles[tileType], tileRect, copyPoint);
@@ -91,7 +97,7 @@ package com.h4ostudio.tilemaps
 			}
 			
 			frameCache.unlock();
-			position=scene.transformScreenToScene(new Point(0,0));
+			//position=scene.transformScreenToScene(new Point(0,0));
 					
 		}
 	}

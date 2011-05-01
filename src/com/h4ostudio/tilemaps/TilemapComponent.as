@@ -29,6 +29,7 @@ package com.h4ostudio.tilemaps
 		private var _tileSize:Point;
 		
 		public var scene:IScene2D;
+		public var lockScene:Boolean=false;
 		
 		public function get tilemapUrl():String
 		{
@@ -65,7 +66,7 @@ package com.h4ostudio.tilemaps
 			_tileResource=r;
 			_tileSize=new Point(r.XMLData.@tilewidth,r.XMLData.@tileheight);
 			
-			if (scene)
+			if (scene && lockScene)
 			{
 				scene.trackLimitRectangle=new Rectangle(0,0,
 							r.XMLData.@width*r.XMLData.@tilewidth,
@@ -87,6 +88,13 @@ package com.h4ostudio.tilemaps
 					var render:TilemapLayerRenderer=new TilemapLayerRenderer();
 					render.tileBank=_tiles;
 					render.tilemapLayer=layer;
+					if (l.@opacity>0)
+						render.alpha=l.@opacity;
+					render.layerIndex=l..property.(@name=="layerIndex").@value;
+					if (l..property.(@name=="parallaxFactorX").@value>0)
+						render.parallaxFactorX=l..property.(@name=="parallaxFactorX").@value;
+					if (l..property.(@name=="parallaxFactorY").@value>0)
+						render.parallaxFactorY=l..property.(@name=="parallaxFactorY").@value;
 					render.scene=scene;
 					owner.addComponent(render,sprintf("Render%s",l.@name));
 				}

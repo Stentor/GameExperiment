@@ -1,7 +1,7 @@
 <things version="1">
 
 	<entity name="Scene">
-		<component type="com.pblabs.rendering2D.DisplayObjectScene" name="Scene">
+		<component type="com.pblabs.rendering2D.BitmapDataScene" name="Scene">
 			<sceneViewName>MainView</sceneViewName>
 			<position>
 				<x>0</x>
@@ -52,7 +52,7 @@
 			</size>
 			<position>
 				<x>400</x>
-				<y>300</y>
+				<y>50</y>
 			</position>			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">
@@ -84,26 +84,11 @@
 		</component>
 	</entity>
 	
-	<entity name="Background">
-		<component type="com.pblabs.rendering2D.SpriteSheetRenderer" name="Render">
-			<scene componentReference="Scene" componentName="Scene"/>
-			<spriteSheet componentReference="BgSpriteSheet"/>
-			<position>
-				<x>448</x>
-				<y>320</y>
-			</position>
-			<size>
-				<x>896</x>
-				<y>640</y>
-			</size>
-			<layerIndex>0</layerIndex>
-		</component>
-	</entity>
-	
 	<entity name="Tilemap">
 		<component type="com.h4ostudio.tilemaps.TilemapComponent" name="Tilemap">
 			<tilemapUrl>../assets/maps/test.tmx</tilemapUrl>
 			<scene componentReference="Scene" componentName="Scene"/>
+			<lockScene>true</lockScene>
 		</component>
 	</entity>
 	
@@ -113,9 +98,7 @@
         <objectReference name="SpatialDB"/>
         <objectReference name="ShipSpriteSheet"/>
         <objectReference name="Ship"/>
-        <!--<objectReference name="Background"/>-->
         <objectReference name="Tilemap" />
-        <!--<objectReference name="BgSpriteSheet"/>-->
-	</group>
+   	</group>
 	
 </things>
