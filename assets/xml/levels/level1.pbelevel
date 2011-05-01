@@ -92,6 +92,13 @@
 		</component>
 	</entity>
 	
+	<entity name="Cloudmap">
+		<component type="com.h4ostudio.tilemaps.TilemapComponent" name="Tilemap">
+			<tilemapUrl>../assets/maps/clouds.tmx</tilemapUrl>
+			<scene componentReference="Scene" componentName="Scene"/>
+		</component>
+	</entity>
+	
 	<group name="All">
 		<objectReference name="Scene"/>
 		<objectReference name="BGMusic"/>
@@ -99,6 +106,7 @@
         <objectReference name="ShipSpriteSheet"/>
         <objectReference name="Ship"/>
         <objectReference name="Tilemap" />
+        <objectReference name="Cloudmap" />
    	</group>
 	
 </things>

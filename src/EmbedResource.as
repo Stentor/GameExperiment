@@ -8,6 +8,9 @@ package
 		[Embed(source="../assets/img/map_helper.png")]
 		public var __ASSETS_IMG_MAP_HELPER_PNG:Class;		
 			
+		[Embed(source="../assets/img/clouds.png")]
+		public var __ASSETS_IMG_CLOUDS_PNG:Class;		
+			
 		[Embed(source="../assets/img/Ship.png")]
 		public var __ASSETS_IMG_SHIP_PNG:Class;		
 			
@@ -19,6 +22,9 @@ package
 			
 		[Embed(source="../assets/xml/levels/level1.pbelevel",mimeType="application/octet-stream")]
 		public var __ASSETS_XML_LEVELS_LEVEL1_PBELEVEL:Class;		
+			
+		[Embed(source="../assets/maps/clouds.tmx",mimeType="application/octet-stream")]
+		public var __ASSETS_MAPS_CLOUDS_TMX:Class;		
 			
 		[Embed(source="../assets/maps/test.tmx",mimeType="application/octet-stream")]
 		public var __ASSETS_MAPS_TEST_TMX:Class;		
