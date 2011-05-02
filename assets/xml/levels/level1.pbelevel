@@ -52,7 +52,7 @@
 			</size>
 			<position>
 				<x>400</x>
-				<y>50</y>
+				<y>5950</y>
 			</position>			
 		</component>
 		<component type="com.pblabs.animation.AnimatorComponent" name="FrameAnimation">

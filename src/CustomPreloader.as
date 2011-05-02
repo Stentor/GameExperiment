@@ -18,7 +18,6 @@ package
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			_mc=new H4oPreloader();
-			trace(_mc.totalFrames);
 			_mc.x=400;
 			_mc.y=300;
 			addChild(_mc);
